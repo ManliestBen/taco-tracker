@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Taco Tracker</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>Taco Tracker</h1>
+    <form action="/tacos" method="POST">
+      <input type="text" name="name" placeholder="Taco Name">
+      <input type="checkbox" name="tasty"><br><br>
+      <button type="submit">Add Taco</button>
+    </form>
+    <% if (!tacos.length) { %>
+      <h3>There are no tacos!</h3>
+    <% } %> 
+    <% tacos.forEach((taco) => { %>
+      <form action="/tacos/<%= taco._id %>?_method=DELETE" method="POST">
+        <button type="submit">X</button>
+      </form>
+      <div>Name: <a href="/tacos/<%= taco._id %>"><%= taco.name %></a></div>
+      <div><%= taco.tasty ? 'is so tasty' : 'is not tasty' %> </div>
+    <% }) %> 
   </body>
 </html>

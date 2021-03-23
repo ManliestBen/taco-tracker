@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/tacos', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
 });
 
 // shortcut to mongoose.connection object
